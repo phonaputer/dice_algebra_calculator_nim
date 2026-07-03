@@ -1,5 +1,5 @@
 from tokens import Token, Token_Kind
-from exceptions import DiceError
+from errors import DiceError
 import std/unicode
 import std/strutils
 import std/strformat
