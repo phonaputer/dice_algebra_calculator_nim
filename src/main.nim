@@ -1,6 +1,7 @@
 from lexer import tokenize
 import std/strformat
 
+
 when isMainModule:
   try:
     stdout.write "Please enter a dice algebra expression: "

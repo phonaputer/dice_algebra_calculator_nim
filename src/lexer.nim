@@ -15,12 +15,10 @@ proc finishInt(tokens: var seq[Token], ongoingInt: var string) =
     tokens.add(Token(kind: TokenKind.integer, intValue: parseInt(ongoingInt)))
     ongoingInt = ""
 
-
 proc addTokenAndFinishInt(tokens: var seq[Token], ongoingInt: var string,
     tokenKind: TokenKind) =
   finishInt(tokens, ongoingInt)
   tokens.add(Token(kind: tokenKind))
-
 
 proc tokenize*(userInput: string): seq[Token] =
   var ongoingInt = ""

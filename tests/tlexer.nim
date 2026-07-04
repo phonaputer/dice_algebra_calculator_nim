@@ -6,7 +6,6 @@ from errors import DiceError
 
 suite "tokenize":
 
-
   test "valid runes input, returns as tokens":
     let input = "1d2D3l4L5h6H7+8-9*/100()"
 
@@ -37,7 +36,6 @@ suite "tokenize":
       Token(kind: TokenKind.closeParenthesis)
     ]
     check expected == results
-
 
   test "valid runes and whitespace input, returns as tokens ignoring whitespace":
     let input = "1 d 2 D    3\t  \n  l 4 L 5 h  6 　　　H 7 \t\t+ 8 - 9 * / 1 \t\n 00 ( ) "
