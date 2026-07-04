@@ -1,19 +1,19 @@
-from lexer import tokenize
 import std/strformat
-
+import std/os
+import ast
+import lexer
+import parser
 
 when isMainModule:
   try:
     stdout.write "Please enter a dice algebra expression: "
 
-    let user_input = readLine(stdin)
+    let result = parse(tokenize(readLine(stdin))).execute
 
-    echo "You rolled: ", user_input
+    if paramCount() > 0 and paramStr(1) == "--v":
+      stdout.write(result.description)
 
-    let tokens = tokenize(user_input)
-
-    for token in tokens:
-      echo repr(token)
+    echo &"\nYour result is: {result.result}"
 
   except Exception as e:
     echo &"Error: {e.msg}"
