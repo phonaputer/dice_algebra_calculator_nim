@@ -1,1 +1,2 @@
-type DiceError* = object of CatchableError
+type
+  DiceError* = object of CatchableError

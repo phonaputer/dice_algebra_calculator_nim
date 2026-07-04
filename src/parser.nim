@@ -1,5 +1,7 @@
-import tokens
+import std/options
 import ast
+import iterators
+import tokens
 from errors import DiceError
 
 
@@ -21,6 +23,23 @@ proc validateParenBalance(tokens: seq[Token]) =
 
   if openCloseBalance != 0:
     raise newException(DiceError, "Expression contains an unclosed parenthetical.")
+
+proc parseIntRaw(tokens: var Iterator[Token]): Positive =
+  let nextToken = tokens.next
+  if nextToken.isNone or nextToken.get.kind != TokenKind.integer:
+    raise newException(DiceError, "Input expression is not valid.")
+
+  return nextToken.get.intValue
+
+proc parseInt(tokens: var Iterator[Token]): AST =
+  return newIntegerAST(intValue = parseIntRaw(tokens))
+
+proc parseShortRoll(tokens: var Iterator[Token]): AST =
+  let nextToken = tokens.next
+  if nextToken.isNone or nextToken.get.kind != TokenKind.dice:
+    raise newException(DiceError, "Parse shortroll should not be called when the next token is not D.")
+
+  return newIntegerAST(intValue = parseIntRaw(tokens))
 
 proc parse*(tokens: seq[Token]): AST =
   validateHaveTokens(tokens)

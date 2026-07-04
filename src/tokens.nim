@@ -1,7 +1,9 @@
-type TokenKind* = enum
-  dice, keepLow, keepHigh, add, subtract, multiply, divide, openParenthesis,
-    closeParenthesis, integer
+type
+  TokenKind* = enum
+    dice, keepLow, keepHigh, add, subtract, multiply, divide, openParenthesis,
+      closeParenthesis, integer
 
-type Token* = object
-  kind*: Token_Kind
-  intValue*: Natural
+type
+  Token* = object
+    kind*: TokenKind
+    intValue*: Natural
