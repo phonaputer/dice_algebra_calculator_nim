@@ -1,8 +1,8 @@
 # Package
 
 version       = "0.1.0"
-author        = "Phonaputer"
-description   = "A new awesome nimble package"
+author        = "phonaputer"
+description   = "Dice Algebra Calculator CLI application written in Nim."
 license       = "MIT"
 srcDir        = "src"
 bin           = @["dice_algebra_calculator_nim"]

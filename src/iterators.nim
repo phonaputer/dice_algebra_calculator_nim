@@ -6,6 +6,9 @@ type
     elements: seq[T]
     curIndex: int = 0
 
+proc newIterator*[T](elements: seq[T]): Iterator[T] =
+  return Iterator[T](elements: elements)
+
 proc next*[T](itr: var Iterator[T]): Option[T] =
   let resIdx = itr.curIndex
   if resIdx >= itr.elements.len:
